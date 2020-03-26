@@ -54,6 +54,15 @@ public class Hand {
         this.currentHand = currentHand;
     }
 
+    public String getCurrentHandAsString(){
+        String output = "";
+        for(Card thisCard : this.currentHand){
+            output += thisCard.getWhatCard();
+            output += " ";
+        }
+        return output;
+    }
+
     public int getPoints() {
         int points = 0;
         for (Card card : currentHand){
