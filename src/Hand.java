@@ -7,10 +7,15 @@ public class Hand {
     private boolean isBusted;
     private boolean isNatural;
 
-    public void hit(){};
+    public void hit(Deck deck){
+        deck.dealCard(this);
+
+        int newPointTotal = this.getPoints();
+    };
 
     public Hand() {
         this.currentHand = new ArrayList<Card>();
+        isBusted = false;
     }
 
     public ArrayList<Card> getCurrentHand() {
@@ -23,10 +28,10 @@ public class Hand {
 
     public int getPoints() {
         int points = 0;
+        boolean emergencyAce = false;
         for (Card card : currentHand){
             points += card.getPointValue();
         }
-
         return points;
     }
 

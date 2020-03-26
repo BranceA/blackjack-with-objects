@@ -11,9 +11,9 @@ public class Table {
         Deck testDeck = new Deck();
         Hand testHand = new Hand();
 
-        for (int i = 0; i < 3; i++){
-            testDeck.dealCard(testHand);
-        }
+        testHand.hit(testDeck);
+        testHand.hit(testDeck);
+        testHand.hit(testDeck);
 
         for (Card card : testHand.getCurrentHand()){
             System.out.println("card.getWhatCard() = " + card.getWhatCard());
