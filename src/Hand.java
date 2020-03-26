@@ -11,7 +11,35 @@ public class Hand {
         deck.dealCard(this);
 
         int newPointTotal = this.getPoints();
+        if(newPointTotal > 21){
+            checkIfBusted();
+        }
     };
+
+    public boolean checkHandForAces(){
+        boolean foundAnAce = false;
+        for(Card cardToCheck : this.currentHand){
+            if (cardToCheck.isAce()) {
+                foundAnAce = true;
+                break;
+            }
+        }
+        return foundAnAce;
+    }
+
+    public boolean checkIfBusted(){
+        boolean didHandJustBust = true;
+        if(checkHandForAces()){
+            for(Card cardToCheck : this.currentHand){
+                if(cardToCheck.isAce()){
+                    cardToCheck.setPointValue(1);
+                    cardToCheck.setAce(false);
+                    didHandJustBust = false;
+                }
+            }
+        }
+        return didHandJustBust;
+    }
 
     public Hand() {
         this.currentHand = new ArrayList<Card>();
@@ -28,7 +56,6 @@ public class Hand {
 
     public int getPoints() {
         int points = 0;
-        boolean emergencyAce = false;
         for (Card card : currentHand){
             points += card.getPointValue();
         }
