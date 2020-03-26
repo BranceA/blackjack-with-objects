@@ -12,7 +12,7 @@ public class Hand {
 
         int newPointTotal = this.getPoints();
         if(newPointTotal > 21){
-            checkIfBusted();
+            isBusted = checkIfBusted();
         }
     };
 
@@ -38,6 +38,11 @@ public class Hand {
                 }
             }
         }
+
+        if(this.getPoints() > 21){
+            didHandJustBust = true;
+        }
+
         return didHandJustBust;
     }
 
