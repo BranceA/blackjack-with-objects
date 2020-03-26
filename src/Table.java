@@ -4,7 +4,18 @@ public class Table {
     private static ArrayList<Player> players;
     private static Dealer dealer = new Dealer();
 
-    private static void start(){};
+    private static void start(){
+        players.add(new Player());
+        Deck deckBeingPlayed = new Deck();
+
+        Player onlyOnePlayerRightNow = players.get(0);
+
+        deckBeingPlayed.dealCard(onlyOnePlayerRightNow.getHand());
+        deckBeingPlayed.dealCard(onlyOnePlayerRightNow.getHand());
+
+        deckBeingPlayed.dealCard(dealer.getHand());
+        deckBeingPlayed.dealCard(dealer.getHand());
+    };
     private static void evaluate(){};
 
     public static void main(String[] args) {
