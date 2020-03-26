@@ -6,4 +6,18 @@ public class Table {
 
     private static void start(){};
     private static void evaluate(){};
+
+    public static void main(String[] args) {
+        Deck testDeck = new Deck();
+        Hand testHand = new Hand();
+
+        for (int i = 0; i < 60; i++){
+            testDeck.dealCard(testHand);
+        }
+
+        for (Card card : testHand.getCurrentHand()){
+            System.out.println("card.getWhatCard() = " + card.getWhatCard());
+            System.out.println("card.getPointValue() = " + card.getPointValue());
+        }
+    }
 }

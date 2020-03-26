@@ -9,6 +9,10 @@ public class Hand {
 
     public void hit(){};
 
+    public Hand() {
+        this.currentHand = new ArrayList<Card>();
+    }
+
     public ArrayList<Card> getCurrentHand() {
         return currentHand;
     }

@@ -11,14 +11,18 @@ public class Deck {
         this.cards = cards;
     }
 
+    public Deck() {
+        this.shuffle();
+    }
+
     public void shuffle(){
         String[] suits = {"S", "C", "D", "H"};
         ArrayList<Card> deck = new ArrayList<>();
 
         for(String suit : suits) {
             for (int i = 1; i <= 13; i++) {
-                String suitAndCard = " ";
-                suitAndCard += suit;
+                String suitAndCard = "";
+                suitAndCard = suit + " ";
                 switch (i) {
                     case 1:
                         suitAndCard += "A";
@@ -79,7 +83,7 @@ public class Deck {
     };
 
     public void dealCard(Hand receivingHand){
-        Card cardToDeal = new Card();
+        Card cardToDeal;
         if(cards.size() > 0) {
             int numberInDeck = cards.size() - 1;
             int randomIndex = (int) (Math.random() * numberInDeck);
