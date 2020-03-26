@@ -11,7 +11,7 @@ public class Table {
         Deck testDeck = new Deck();
         Hand testHand = new Hand();
 
-        for (int i = 0; i < 60; i++){
+        for (int i = 0; i < 3; i++){
             testDeck.dealCard(testHand);
         }
 
@@ -19,5 +19,7 @@ public class Table {
             System.out.println("card.getWhatCard() = " + card.getWhatCard());
             System.out.println("card.getPointValue() = " + card.getPointValue());
         }
+
+        System.out.println("testHand.getPoints() = " + testHand.getPoints());
     }
 }

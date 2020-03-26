@@ -22,6 +22,11 @@ public class Hand {
     }
 
     public int getPoints() {
+        int points = 0;
+        for (Card card : currentHand){
+            points += card.getPointValue();
+        }
+
         return points;
     }
 
