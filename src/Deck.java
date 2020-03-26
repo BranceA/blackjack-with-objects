@@ -78,5 +78,20 @@ public class Deck {
         this.cards = deck;
     };
 
-    public void dealCard(){};
+    public void dealCard(Hand receivingHand){
+        Card cardToDeal = new Card();
+        if(cards.size() > 0) {
+            int numberInDeck = cards.size() - 1;
+            int randomIndex = (int) (Math.random() * numberInDeck);
+            cardToDeal = cards.get(randomIndex);
+            cards.remove(randomIndex);
+        }else {
+            this.shuffle();
+            int numberInDeck = cards.size() - 1;
+            int randomIndex = (int) (Math.random() * numberInDeck);
+            cardToDeal = cards.get(randomIndex);
+            cards.remove(randomIndex);
+        }
+        receivingHand.getCurrentHand().add(cardToDeal);
+    };
 }

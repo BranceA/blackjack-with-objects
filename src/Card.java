@@ -9,6 +9,8 @@ public class Card {
         this.whatCard = whatCard;
     }
 
+    public Card() {};
+
     public int getPointValue() {
         return pointValue;
     }
