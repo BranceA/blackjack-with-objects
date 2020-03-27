@@ -7,6 +7,11 @@ public class Player {
         this.bankroll = 1000;
     }
 
+    public Player(int bankroll){
+        this.hand = new Hand();
+        this.bankroll = bankroll;
+    }
+
     public Hand getHand() {
         return hand;
     }

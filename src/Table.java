@@ -8,8 +8,11 @@ public class Table {
 
     private static void start(){
 
-        player.getHand().getCurrentHand().clear();
-        dealer.getHand().getCurrentHand().clear();
+        if(player.getHand().getCurrentHand().size() > 0){
+            int currentBankroll = player.getBankroll();
+            player = new Player(currentBankroll);
+            dealer = new Dealer();
+        }
 
         System.out.printf("Your bankroll is %d. How much would you like to bet?%n", player.getBankroll());
         int playerBet = input.getInt(1, player.getBankroll());
