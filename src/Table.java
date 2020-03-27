@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Table {
     private static Player player = new Player();
     private static Dealer dealer = new Dealer();
@@ -5,6 +7,9 @@ public class Table {
     private static Deck deckBeingPlayed = new Deck();
 
     private static void start(){
+
+        player.getHand().getCurrentHand().clear();
+        dealer.getHand().getCurrentHand().clear();
 
         System.out.printf("Your bankroll is %d. How much would you like to bet?%n", player.getBankroll());
         int playerBet = input.getInt(1, player.getBankroll());
@@ -35,7 +40,7 @@ public class Table {
     };
 
     private static void evaluate(Player player, Dealer dealer){
-        if(player.getHand().isBusted() || player.getHand().getPoints() < dealer.getHand().getPoints()){
+        if(player.getHand().isBusted() || (player.getHand().getPoints() < dealer.getHand().getPoints() && !dealer.getHand().isBusted())){
             int newTotal = player.getBankroll() - player.getHand().getBet();
             player.setBankroll(newTotal);
             System.out.printf("You lose. Your new total is %d%n", newTotal);
@@ -45,6 +50,12 @@ public class Table {
             System.out.printf("YOU WIN!!! Your new total is %d%n", newTotal);
         }else if(player.getHand().getPoints() == dealer.getHand().getPoints()){
             System.out.printf("It's a push. Your total is still %d%n", player.getBankroll());
+        }
+
+        System.out.println("Would you like to play again?");
+        boolean playAgain = input.yesNo();
+        if(playAgain){
+            start();
         }
     };
 
