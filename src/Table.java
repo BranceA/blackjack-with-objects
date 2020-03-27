@@ -36,7 +36,7 @@ public class Table {
 
     private static void evaluate(Player player, Dealer dealer){
         if(player.getHand().isBusted() || player.getHand().getPoints() < dealer.getHand().getPoints()){
-            int newTotal = player.getHand().getBet() - player.getBankroll();
+            int newTotal = player.getBankroll() - player.getHand().getBet();
             player.setBankroll(newTotal);
             System.out.printf("You lose. Your new total is %d%n", newTotal);
         }else if(player.getHand().getPoints() > dealer.getHand().getPoints()){
