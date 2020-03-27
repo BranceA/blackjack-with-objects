@@ -14,7 +14,7 @@ public class Dealer {
     }
 
     public void playHand(Deck deckBeingPlayed){
-        if(hand.getPoints() < 17){
+        while(hand.getPoints() < 17){
             hand.hit(deckBeingPlayed);
         }
     };
