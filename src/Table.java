@@ -50,7 +50,7 @@ public class Table {
 
     private static void evaluate(Player player, Dealer dealer){
         if(player.getHand().isNatural()){
-            int newTotal = player.getBankroll() + (int)(player.getHand().getBet() * 1.5);
+            int newTotal = player.getBankroll() + (int) Math.round(player.getHand().getBet() * 1.5);
             player.setBankroll(newTotal);
             System.out.printf("Oh snap! Natural 21. Your new total is %d%n", newTotal);
         }else if(player.getHand().isBusted() || (player.getHand().getPoints() < dealer.getHand().getPoints() && !dealer.getHand().isBusted())){
@@ -67,7 +67,9 @@ public class Table {
 
         System.out.println("Would you like to play again?");
         boolean playAgain = input.yesNo();
-        if(playAgain){
+        if(player.getBankroll() == 0){
+            System.out.println("Sorry bud. You're broke. Better luck next time.");
+        }else if(playAgain){
             start();
         }
     };
