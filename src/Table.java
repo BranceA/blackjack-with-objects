@@ -21,6 +21,10 @@ public class Table {
 
         player.getHand().hit(deckBeingPlayed);
         player.getHand().hit(deckBeingPlayed);
+        if(player.getHand().getPoints() == 21){
+            playerIsDone = true;
+            player.getHand().setNatural(true);
+        }
 
         dealer.getHand().hit(deckBeingPlayed);
         dealer.getHand().hit(deckBeingPlayed);
@@ -37,13 +41,19 @@ public class Table {
             }
         }
 
-        dealer.playHand(deckBeingPlayed);
+        if(!player.getHand().isBusted()){
+            dealer.playHand(deckBeingPlayed);
+        }
         displayTable();
         evaluate(player, dealer);
     };
 
     private static void evaluate(Player player, Dealer dealer){
-        if(player.getHand().isBusted() || (player.getHand().getPoints() < dealer.getHand().getPoints() && !dealer.getHand().isBusted())){
+        if(player.getHand().isNatural()){
+            int newTotal = player.getBankroll() + (int)(player.getHand().getBet() * 1.5);
+            player.setBankroll(newTotal);
+            System.out.printf("Oh snap! Natural 21. Your new total is %d%n", newTotal);
+        }else if(player.getHand().isBusted() || (player.getHand().getPoints() < dealer.getHand().getPoints() && !dealer.getHand().isBusted())){
             int newTotal = player.getBankroll() - player.getHand().getBet();
             player.setBankroll(newTotal);
             System.out.printf("You lose. Your new total is %d%n", newTotal);

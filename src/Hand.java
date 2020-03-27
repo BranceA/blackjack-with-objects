@@ -49,7 +49,8 @@ public class Hand {
 
     public Hand() {
         this.currentHand = new ArrayList<Card>();
-        isBusted = false;
+        this.isBusted = false;
+        this.isNatural = false;
     }
 
     public ArrayList<Card> getCurrentHand() {
