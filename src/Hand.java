@@ -35,6 +35,7 @@ public class Hand {
                     cardToCheck.setPointValue(1);
                     cardToCheck.setAce(false);
                     didHandJustBust = false;
+                    break;
                 }
             }
         }
