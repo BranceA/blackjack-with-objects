@@ -47,7 +47,7 @@ public class Table {
             int newTotal = player.getBankroll() - player.getHand().getBet();
             player.setBankroll(newTotal);
             System.out.printf("You lose. Your new total is %d%n", newTotal);
-        }else if(player.getHand().getPoints() > dealer.getHand().getPoints()){
+        }else if(player.getHand().getPoints() > dealer.getHand().getPoints() || dealer.getHand().isBusted()){
             int newTotal = player.getHand().getBet() + player.getBankroll();
             player.setBankroll(newTotal);
             System.out.printf("YOU WIN!!! Your new total is %d%n", newTotal);
