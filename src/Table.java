@@ -29,14 +29,23 @@ public class Table {
             }
         }
 
-        System.out.println("playerIsDone = " + playerIsDone);
-        System.out.println("player.getHand().isBusted() = " + player.getHand().isBusted());
         dealer.playHand(deckBeingPlayed);
         displayTable();
+        evaluate(player, dealer);
     };
 
-    private static void evaluate(Hand hand){
-
+    private static void evaluate(Player player, Dealer dealer){
+        if(player.getHand().isBusted() || player.getHand().getPoints() < dealer.getHand().getPoints()){
+            int newTotal = player.getHand().getBet() - player.getBankroll();
+            player.setBankroll(newTotal);
+            System.out.printf("You lose. Your new total is %d%n", newTotal);
+        }else if(player.getHand().getPoints() > dealer.getHand().getPoints()){
+            int newTotal = player.getHand().getBet() + player.getBankroll();
+            player.setBankroll(newTotal);
+            System.out.printf("YOU WIN!!! Your new total is %d%n", newTotal);
+        }else if(player.getHand().getPoints() == dealer.getHand().getPoints()){
+            System.out.printf("It's a push. Your total is still %d%n", player.getBankroll());
+        }
     };
 
     private static void displayTable(){
