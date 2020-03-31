@@ -1,23 +1,14 @@
-public class Player {
-    private Hand hand;
+public class Player extends Participant {
     private int bankroll;
 
     public Player() {
-        this.hand = new Hand();
+        super();
         this.bankroll = 1000;
     }
 
     public Player(int bankroll){
-        this.hand = new Hand();
+        super();
         this.bankroll = bankroll;
-    }
-
-    public Hand getHand() {
-        return hand;
-    }
-
-    public void setHand(Hand hand) {
-        this.hand = hand;
     }
 
     public int getBankroll() {

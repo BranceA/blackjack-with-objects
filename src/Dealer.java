@@ -1,16 +1,7 @@
-public class Dealer {
-    private Hand hand;
+public class Dealer extends Participant {
 
     public Dealer() {
-        this.hand = new Hand();
-    }
-
-    public Hand getHand() {
-        return hand;
-    }
-
-    public void setHand(Hand hand) {
-        this.hand = hand;
+        super();
     }
 
     public void playHand(Deck deckBeingPlayed){
